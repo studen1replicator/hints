@@ -1,0 +1,22 @@
+elasticsearch -> logstash -> filebeat -> kibana
+
+___need to redacture:
+
+nano /etc/elasticsearch/elasticsearch.yml
+
+cluster.name: elk
+
+http.host: 0.0.0.0
+network.host: 0.0.0.0
+transport.host: 0.0.0.0
+
+___start service:
+systemctl daemon-reload
+systemctl start elasticsearch.service
+
+___change password:
+/usr/share/elasticsearch/bin/elasticsearch-reset-password -u elastic -i
+
+___command to look some:
+curl -k -u elastic:qwerty https://localhost:9200/_cat/health?v
+curl -k -u elastic:qwerty https://localhost:9200/_cat/nodes?v
